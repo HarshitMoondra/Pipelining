@@ -91,13 +91,15 @@ end if ;
 if (opcode = "0101" or opcode = "0111" or opcode = "1100") then 
 	wr_en <= '0';
 else 
-		if (opcode(3 downto 1) = "000" and cz(1) = '1' and cflag = '0' ) then
-			wr_en <= '0';
-		elsif (opcode(3 downto 1) = "000" and cz(0) = '1' and zflag = '0') then
-			wr_en <= '0';
-		else 
-			wr_en <= '1'; 
-	  	end if ; 
+	wr_en <= '1';
+		--if (opcode(3 downto 1) = "000" and cz(1) = '1' and cflag = '0' ) then
+		--	wr_en <= '0';
+		--elsif (opcode(3 downto 1) = "000" and cz(0) = '1' and zflag = '0') then
+		--	wr_en <= '0';
+		--else 
+		--	wr_en <= '1'; 
+	  	--end if ; 
+		-- The above conditions will be used to write into the final wr_en_wb using the carry_wb value.....
 end if ;
 
 if (opcode = "1000") then --For JAL 
